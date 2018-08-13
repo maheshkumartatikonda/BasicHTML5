@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Maheshkumar Tatikonda</title>
+
+
+
+<script>
+
+document.createElement("mahesh")
+    
+function getLocation() {
+    //alert(navigator.geolocation);
+    //var myvar = document.getElementById("demo");
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    //alert(position)
+//var myvar = document.getElementById("demo");
+    document.getElementById("demo").innerHTML = "We have noted your location, will keep you posted <br> Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+    //alert( myvar.innerHTML)
+}
+    
+    
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("localvisit").innerHTML = "Your visit number V00000" + localStorage.clickcount + "";
+    } else {
+        document.getElementById("localvisit").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+    
+    if(typeof(Storage) !== "undefined") {
+        if (sessionStorage.clickcount) {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+        } else {
+            sessionStorage.clickcount = 1;
+        }
+        document.getElementById("sessionvisit").innerHTML = "Your session visit id SESS0000" + sessionStorage.clickcount + " .";
+    } else {
+        document.getElementById("sessionvisit").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+function load(){
+    getLocation();
+    clickCounter();
+}   
+</script>    
+<style>
+mahesh {
+    display: block;
+    background-color: #dddddd;
+    padding: 50px;
+    font-size: 30px;
+}  
+</style>
+</head>
+<body onload="load()">
+
+<h1>Apologies</h1>
+<mahesh>This page is undercontruction </mahesh>
+<p id="demo">Location</p>
+<p id="localvisit"></p> 
+<p id="sessionvisit"></p>    
+    
+</body>
+</html>
